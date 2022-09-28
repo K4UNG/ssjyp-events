@@ -36,7 +36,9 @@ function Navbar() {
           menu ? "bg-white duration-300" : ""
         }`}
       >
-        <div className="font-bold text-2xl">SSJYP</div>
+        <div className="font-bold text-2xl">
+          <Link href="/">SSJYP</Link>
+        </div>
         <ul className="hidden">
           {links.map((link) => {
             return (

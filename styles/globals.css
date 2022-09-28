@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-slide > div {
+  height: 220px;
+}
+
 @layer base {
   button,
   a {
