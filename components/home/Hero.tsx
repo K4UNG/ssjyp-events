@@ -18,7 +18,7 @@ const data = [
     overview:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis",
     slug: "itzy-ting",
-    image: "/event.webp",
+    image: "/event2.webp",
   },
 ];
 
