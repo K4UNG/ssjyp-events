@@ -19,7 +19,22 @@ const links = [
 
 function Navbar() {
   const [menu, setMenu] = useState(false);
+  const [scroll, setScroll] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    function scrollHandler() {
+      const progress = document.documentElement.scrollTop;
+      if (progress === 0) {
+        setScroll(false);
+      } else if (progress > 0 && !scroll) {
+        setScroll(true);
+      }
+    }
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   useEffect(() => {
     if (menu) {
@@ -30,7 +45,11 @@ function Navbar() {
   }, [menu]);
 
   return (
-    <div className="border-b border-inherit sticky top-0 z-50">
+    <div
+      className={`border-b duration-200 transition-shadow border-black border-opacity-30 sticky top-0 z-50 ${
+        scroll ? "shadow-lg" : ""
+      }`}
+    >
       <nav
         className={`container p-4 py-3 flex justify-between items-center transition-colors duration-1000 ${
           menu ? "bg-white duration-300" : "bg-body"
