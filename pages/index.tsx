@@ -15,7 +15,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container p-4">
+      <div className="container p-4 mx-auto lg:max-w-[960px]">
         <Hero />
         <Bonus />
       </div>

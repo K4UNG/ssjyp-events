@@ -46,29 +46,42 @@ function Navbar() {
 
   return (
     <div
-      className={`border-b duration-200 transition-shadow border-black border-opacity-30 sticky top-0 z-50 ${
+      className={`border-b duration-200 transition-shadow border-black border-opacity-30 sticky top-0 z-50 bg-body ${
         scroll ? "shadow-lg" : ""
       }`}
     >
       <nav
-        className={`container p-4 py-3 flex justify-between items-center transition-colors duration-1000 ${
-          menu ? "bg-white duration-300" : "bg-body"
+        className={`container mx-auto p-4 py-3 flex justify-between items-center transition-colors duration-1000 lg:max-w-[960px] ${
+          menu ? "bg-white duration-300" : ""
         }`}
       >
         <div className="font-bold text-2xl">
           <Link href="/">SSJYP</Link>
         </div>
-        <ul className="hidden">
+        <ul className="hidden sm:flex items-center space-x-8">
           {links.map((link) => {
             return (
-              <li key={link.name}>
-                <Link href={link.link}>{link.name}</Link>
+              <li
+                key={link.name}
+                className={`text-xl uppercase ${
+                  router.pathname === link.link ? "font-bold" : ""
+                }`}
+              >
+                <Link href={link.link}>
+                  <a
+                    className={`relative after after:absolute after:w-full after:h-[1px] after:bg-black after:top-full after:left-0 after:scale-x-0 after:origin-right hover:after:scale-x-100 hover:after:origin-left after:duration-150 after:transition-transform ${
+                      router.pathname === link.link ? "after:scale-x-100" : ""
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </Link>
               </li>
             );
           })}
         </ul>
         <button
-          className="w-7 h-5 relative"
+          className="w-7 h-5 relative sm:hidden"
           onClick={() => setMenu((prev) => !prev)}
         >
           <span
@@ -90,7 +103,7 @@ function Navbar() {
         <div
           className={`absolute w-full top-full left-0 transition-[height] duration-700 ease-in-out overflow-hidden bg-white ${
             menu ? "h-screen" : "h-0"
-          }`}
+          } sm:hidden`}
         >
           <ul className="absolute left-1/2 top-1/4 -translate-x-1/2 text-center">
             {links.map((link) => {

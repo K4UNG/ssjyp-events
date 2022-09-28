@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head />
-        <body className="bg-body font-body min-h-screen">
+        <body className="bg-body font-body min-h-screen sm:overflow-auto">
           <Main />
           <NextScript />
         </body>
