@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -26,7 +26,7 @@ function Hero() {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 150,
+    speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -35,6 +35,10 @@ function Hero() {
   const slider = useRef<Slider>(null);
 
   const current = data[slide];
+
+  useEffect(() => {
+    slider.current?.slickGoTo(slide);
+  }, [slide]);
 
   function swipeHandler(dir: string) {
     if (dir === "left" && slide !== data.length - 1) {
@@ -82,7 +86,7 @@ function Hero() {
             );
           })}
         </Slider>
-        <div className="border-top-[2px] border-black p-4 text-center pt-2">
+        <div className="border-t-[2px] border-black p-4 text-center pt-2">
           <div>
             <div className="space-x-2">
               {Array.from(Array(data.length).keys()).map((n) => (
@@ -98,12 +102,66 @@ function Hero() {
                 />
               ))}
             </div>
+            <div className="hidden">
+              <button
+                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center"
+                onClick={prevSlide}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <button
+                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center"
+                onClick={nextSlide}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <h2 className="text-2xl font-bold">{current.name}</h2>
           <p className="text-base leading-5 mb-6 mt-2">{current.overview}</p>
           <Link href={"/events/" + current.slug}>
-            <a className="border-[2px] border-black uppercase font-bold py-1 px-6 transition-colors duration-150 hover:bg-black hover:text-white">
+            <a className="border-[2px] border-black uppercase font-bold py-1 px-6 transition-colors duration-150 hover:bg-black hover:text-white flex w-fit mx-auto items-center">
               Learn more
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-5 h-5 ml-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
             </a>
           </Link>
         </div>

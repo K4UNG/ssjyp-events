@@ -30,10 +30,10 @@ function Navbar() {
   }, [menu]);
 
   return (
-    <div className="border-b border-inherit relative">
+    <div className="border-b border-inherit sticky top-0 z-50">
       <nav
         className={`container p-4 py-3 flex justify-between items-center transition-colors duration-1000 ${
-          menu ? "bg-white duration-300" : ""
+          menu ? "bg-white duration-300" : "bg-body"
         }`}
       >
         <div className="font-bold text-2xl">
