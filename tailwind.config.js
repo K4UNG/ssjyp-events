@@ -11,6 +11,11 @@ module.exports = {
         caudex: ["Caudex", "serif"],
         dm: ["DM Sans", "sans-serif"],
       },
+      colors: {
+        br: "#CECECE",
+        body: "#F2F2F2",
+        accent: "#34C2E1",
+      },
     },
   },
   plugins: [],

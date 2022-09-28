@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="font-body">
+    <div>
       <Navbar />
       <Component {...pageProps} />
     </div>
