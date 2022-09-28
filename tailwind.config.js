@@ -16,6 +16,9 @@ module.exports = {
         body: "#F2F2F2",
         accent: "#34C2E1",
       },
+      fontSize: {
+        "2.5xl": "1.8rem",
+      },
     },
   },
   plugins: [],

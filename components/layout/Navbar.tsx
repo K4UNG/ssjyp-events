@@ -53,9 +53,9 @@ function Navbar() {
       <nav
         className={`container mx-auto p-4 py-3 flex justify-between items-center transition-colors duration-1000 lg:max-w-[960px] ${
           menu ? "bg-white duration-300" : ""
-        }`}
+        } lg:py-4`}
       >
-        <div className="font-bold text-2xl">
+        <div className="font-bold text-2xl lg:text-3xl">
           <Link href="/">SSJYP</Link>
         </div>
         <ul className="hidden sm:flex items-center space-x-8">

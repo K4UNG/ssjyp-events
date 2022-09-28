@@ -67,11 +67,18 @@ function Hero() {
   }
 
   return (
-    <div className="overflow-x-hidden">
-      <h1 className="font-caudex font-bold text-2xl mb-4">Active Events</h1>
+    <div className="overflow-x-hidden lg:my-8">
+      <h1 className="font-caudex font-bold text-2xl mb-4 lg:text-2.5xl">
+        Active Events
+      </h1>
 
-      <div className="border-[2px] border-black bg-white">
-        <Slider {...settings} ref={slider} onSwipe={swipeHandler}>
+      <div className="border-[2px] border-black bg-white lg:grid lg:grid-cols-3">
+        <Slider
+          {...settings}
+          ref={slider}
+          onSwipe={swipeHandler}
+          className="lg:col-span-2 h-60 lg:h-auto lg:min-h-60"
+        >
           {data.map((item) => {
             return (
               <div className="relative w-full h-full" key={item.slug}>
@@ -86,13 +93,13 @@ function Hero() {
             );
           })}
         </Slider>
-        <div className="border-t-[2px] border-black p-4 text-center pt-2">
-          <div>
+        <div className="border-t-[2px] border-black p-4 text-center pt-2 lg:border-t-0 lg:border-l-[2px] lg:text-left lg:p-6">
+          <div className="lg:mb-2 lg:flex lg:justify-between">
             <div className="space-x-2">
               {Array.from(Array(data.length).keys()).map((n) => (
                 <button
                   key={n}
-                  className={`h-2 bg-black rounded-full duration-250 transition-[background-color_width] hover:bg-accent ${
+                  className={`h-2 bg-black rounded-full duration-250 transition-[background-color_width] lg:hover:bg-accent ${
                     slide === n ? "w-14 bg-accent" : "w-2"
                   }`}
                   onClick={() => {
@@ -102,9 +109,9 @@ function Hero() {
                 />
               ))}
             </div>
-            <div className="hidden">
+            <div className="hidden lg:flex space-x-2">
               <button
-                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center"
+                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center hover:bg-black hover:text-white duration-150 transition-colors"
                 onClick={prevSlide}
               >
                 <svg
@@ -113,7 +120,7 @@ function Hero() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-5 h-5 p-1"
                 >
                   <path
                     strokeLinecap="round"
@@ -123,7 +130,7 @@ function Hero() {
                 </svg>
               </button>
               <button
-                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center"
+                className="w-6 h-6 border border-black font-bold text-2xl [0] grid place-items-center hover:bg-black hover:text-white duration-150 transition-colors"
                 onClick={nextSlide}
               >
                 <svg
@@ -132,7 +139,7 @@ function Hero() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-5 h-5 p-1"
                 >
                   <path
                     strokeLinecap="round"
@@ -146,7 +153,7 @@ function Hero() {
           <h2 className="text-2xl font-bold">{current.name}</h2>
           <p className="text-base leading-5 mb-6 mt-2">{current.overview}</p>
           <Link href={"/events/" + current.slug}>
-            <a className="border-[2px] border-black uppercase font-bold py-1 px-6 transition-colors duration-150 hover:bg-black hover:text-white flex w-fit mx-auto items-center">
+            <a className="border-[2px] border-black uppercase font-bold py-1 px-6 transition-colors duration-150 hover:bg-black hover:text-white flex w-fit mx-auto items-center lg:mx-0">
               Learn more
               <svg
                 xmlns="http://www.w3.org/2000/svg"
