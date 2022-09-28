@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 const links = [
   {
@@ -18,10 +19,15 @@ const links = [
 
 function Navbar() {
   const [menu, setMenu] = useState(false);
+  const router = useRouter();
 
   return (
-    <div className="border-b border-inherit">
-      <nav className="container p-4 py-3 flex justify-between items-center">
+    <div className="border-b border-inherit relative">
+      <nav
+        className={`container p-4 py-3 flex justify-between items-center transition-colors duration-1000 ${
+          menu ? "bg-white duration-300" : ""
+        }`}
+      >
         <div className="font-bold text-2xl">SSJYP</div>
         <ul className="hidden">
           {links.map((link) => {
@@ -52,6 +58,29 @@ function Navbar() {
             }`}
           />
         </button>
+        <div
+          className={`absolute w-full top-full left-0 transition-[height] duration-700 ease-in-out overflow-hidden bg-white ${
+            menu ? "h-screen" : "h-0"
+          }`}
+        >
+          <ul className="absolute left-1/2 top-1/4 -translate-x-1/2 text-center">
+            {links.map((link) => {
+              return (
+                <li key={link.name} className="my-8">
+                  <Link href={link.link}>
+                    <a
+                      className={`font-dm uppercase text-3xl ${
+                        router.pathname === link.link ? "font-bold" : ""
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </nav>
     </div>
   );

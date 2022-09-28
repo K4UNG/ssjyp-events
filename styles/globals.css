@@ -3,3 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
