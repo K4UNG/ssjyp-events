@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const links = [
@@ -20,6 +20,14 @@ const links = [
 function Navbar() {
   const [menu, setMenu] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if (menu) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [menu]);
 
   return (
     <div className="border-b border-inherit relative">
