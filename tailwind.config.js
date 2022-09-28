@@ -5,7 +5,13 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ["Cormorant Garamond", "serif"],
+        caudex: ["Caudex", "serif"],
+        dm: ["DM Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
