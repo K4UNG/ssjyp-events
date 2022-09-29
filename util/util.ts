@@ -8,8 +8,8 @@ interface Album {
   releastDate: string;
 }
 
-export function isBirthday(artists: Artist[]) {
-  const { curr, currYear, currMonth } = getKoreanDate();
+export function isBirthday(artists: Artist[], time: string) {
+  const { curr, currYear, currMonth } = getKoreanDate(time);
   let birthdays: string[] = [];
 
   artists.forEach((artist) => {
@@ -20,8 +20,8 @@ export function isBirthday(artists: Artist[]) {
   return birthdays;
 }
 
-export function isBonus(albums: Album[]) {
-  const { curr, currYear, currMonth } = getKoreanDate();
+export function isBonus(albums: Album[], time: string) {
+  const { curr, currYear, currMonth } = getKoreanDate(time);
   let bonuses: string[] = [];
   albums.forEach((album) => {
     const check = checkRange(album.releastDate, currYear, currMonth, curr);
@@ -59,8 +59,8 @@ function checkRange(
   return false;
 }
 
-function getKoreanDate() {
-  const curr = new Date().toLocaleString("en-US", {
+function getKoreanDate(time: string) {
+  const curr = new Date(time).toLocaleString("en-US", {
     timeZone: "Asia/Seoul",
   });
   //   const curr = new Date("2022/09/22"); // test

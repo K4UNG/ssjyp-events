@@ -48,7 +48,7 @@ function Hero() {
         }
         return prev + 1;
       });
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, []);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AlbumItem from "../album/AlbumItem";
 import Image from "next/image";
 import { DataProps } from "../../pages";
@@ -6,25 +6,33 @@ import { urlFor } from "../../sanity";
 import { isBirthday, isBonus } from "../../util/util";
 
 function Bonus({ data }: DataProps) {
-  // console.log(
-  //   isBonus(
-  //     data[0].albums.map(({ title, releastDate }) => ({ title, releastDate }))
-  //   )
-  // );
-  // console.log(isBirthday(data[0].artists));
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+
   return (
     <div className="mt-8 lg:mt-12 lg:mb-8">
       <h2 className="font-caudex font-bold text-2xl mb-4 lg:text-2.5xl">
         Active Bonus Rewards
       </h2>
-      <select className="border border-black px-2 mb-4 font-bold">
+      <select className="border border-black px-2 mb-2 font-dm">
         <option>All Groups</option>
         <option>Twice</option>
       </select>
+      <br className="md:hidden" />
+      <label htmlFor="date" className="font-bold md:ml-4">
+        Choose a date:{" "}
+      </label>
+      <br className="md:hidden" />
+      <input
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        type="date"
+        id="date"
+        className="border border-black px-2 mb-4 font-dm"
+      />
 
       {data.map((item) => {
-        const birthdays = isBirthday(item.artists);
-        const bonus = isBonus(item.albums);
+        const birthdays = isBirthday(item.artists, date);
+        const bonus = isBonus(item.albums, date);
         let birthdayBonus: string[] = [];
         if (birthdays.length > 0) {
           item.albums.forEach((album) => {
