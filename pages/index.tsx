@@ -1,9 +1,33 @@
-import type { NextPage } from "next";
+import type { NextPage, InferGetStaticPropsType, GetStaticProps } from "next";
 import Head from "next/head";
 import Hero from "../components/home/Hero";
 import Bonus from "../components/home/Bonus";
+import client from "../sanity";
 
-const Home: NextPage = () => {
+interface Album {
+  title: string;
+  releastDate: string;
+  coverImage: object;
+  slug: {
+    current: string;
+  };
+}
+
+interface Data {
+  name: string;
+  logo: string;
+  slug: {
+    current: string;
+  };
+  albums: Album[];
+}
+
+export interface DataProps {
+  data: Data[];
+}
+
+const Home: NextPage<DataProps> = ({ data }) => {
+  console.log(data);
   return (
     <div>
       <Head>
@@ -17,10 +41,42 @@ const Home: NextPage = () => {
 
       <div className="container p-4 mx-auto lg:max-w-[960px]">
         <Hero />
-        <Bonus />
+        <Bonus data={data} />
       </div>
     </div>
   );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data: Data[] | null =
+    await client.fetch(`*[_type=='group'] | order(debut) {
+      name,
+      logo,
+      slug,
+      'albums': *[
+        _type=='album'
+        &&
+        group._ref==^._id
+                ] {
+      title,
+      releastDate,
+      coverImage,
+      slug
+    }
+  }`);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 1800,
+  };
+};

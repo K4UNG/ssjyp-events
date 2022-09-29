@@ -12,9 +12,9 @@ interface Props {
 function AlbumItem({ image, title, percent, slug }: Props) {
   return (
     <Link href={"/albums/" + slug} passHref={true}>
-      <a className="border-[2px] border-black relative">
+      <a className="border-[2px] border-black relative bg-white">
         {percent && (
-          <div className="absolute bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm">
+          <div className="absolute font-bold bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm">
             {percent + " %"}
           </div>
         )}
@@ -28,8 +28,8 @@ function AlbumItem({ image, title, percent, slug }: Props) {
             priority={true}
           />
         </div>
-        <div className="border-t-[2px] border-black px-2">
-          <h3 className="font-bold">{title}</h3>
+        <div className="border-t-[2px] border-black px-2 py-1">
+          <h3 className="font-bold text-sm">{title}</h3>
         </div>
       </a>
     </Link>
