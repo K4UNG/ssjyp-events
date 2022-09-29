@@ -40,6 +40,19 @@ function Hero() {
     slider.current?.slickGoTo(slide);
   }, [slide]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlide((prev) => {
+        if (prev === data.length - 1) {
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   function swipeHandler(dir: string) {
     if (dir === "left" && slide !== data.length - 1) {
       setSlide((prev) => prev + 1);

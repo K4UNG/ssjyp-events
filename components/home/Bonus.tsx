@@ -4,46 +4,6 @@ import Image from "next/image";
 import { DataProps } from "../../pages";
 import { urlFor } from "../../sanity";
 
-// const data = [
-//   {
-//     name: "Twice",
-//     albums: [
-//       {
-//         title: "Feel Special",
-//         image: "/Feel_Special.jpg",
-//         slug: "feel-special",
-//       },
-//       {
-//         title: "Yes or Yes",
-//         image: "/YES_or_YES.jpg",
-//         slug: "feel-special",
-//       },
-//       {
-//         title: "Eyes Wide Open",
-//         image: "/Eyes_Wide_Open.jpg",
-//         slug: "eyes-wide-open",
-//       },
-//     ],
-//     logo: "/twice.png",
-//   },
-//   {
-//     name: "Itzy",
-//     albums: [
-//       {
-//         title: "Feel Special",
-//         image: "/Feel_Special.jpg",
-//         slug: "feel-special",
-//       },
-//       {
-//         title: "Yes or Yes",
-//         image: "/YES_or_YES.jpg",
-//         slug: "feel-special",
-//       },
-//     ],
-//     logo: "/twice.png",
-//   },
-// ];
-
 function Bonus({ data }: DataProps) {
   return (
     <div className="mt-8 lg:mt-12 lg:mb-8">

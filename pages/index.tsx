@@ -27,7 +27,6 @@ export interface DataProps {
 }
 
 const Home: NextPage<DataProps> = ({ data }) => {
-  console.log(data);
   return (
     <div>
       <Head>
