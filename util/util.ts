@@ -9,13 +9,11 @@ interface Album {
 }
 
 export function isBirthday(artists: Artist[]) {
-  const koreanDate = getKoreanDate();
-  const currYear = koreanDate.getFullYear();
-  const currMonth = koreanDate.getMonth();
+  const { curr, currYear, currMonth } = getKoreanDate();
   let birthdays: string[] = [];
 
   artists.forEach((artist) => {
-    const check = checkRange(artist.birthdate, currYear, currMonth, koreanDate);
+    const check = checkRange(artist.birthdate, currYear, currMonth, curr);
     if (check) birthdays.push(artist.name);
   });
 
@@ -23,9 +21,7 @@ export function isBirthday(artists: Artist[]) {
 }
 
 export function isBonus(albums: Album[]) {
-  const curr = getKoreanDate();
-  const currYear = curr.getFullYear();
-  const currMonth = curr.getMonth();
+  const { curr, currYear, currMonth } = getKoreanDate();
   let bonuses: string[] = [];
   albums.forEach((album) => {
     const check = checkRange(album.releastDate, currYear, currMonth, curr);
@@ -68,5 +64,10 @@ function getKoreanDate() {
     timeZone: "Asia/Seoul",
   });
   //   const curr = new Date("2022/08/23"); // test
-  return new Date(curr);
+  const date = new Date(curr);
+  return {
+    curr: date,
+    currYear: date.getFullYear(),
+    currMonth: date.getMonth(),
+  };
 }
