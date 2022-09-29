@@ -10,7 +10,7 @@ function Artist({ data }: { data: Artist }) {
   return (
     <div className="sm:grid content-center">
       <BackBtn />
-      <div className="sm:grid sm:grid-cols-[1fr_1.3fr] sm:items-center sm:space-x-8">
+      <div className="sm:grid sm:grid-cols-[1fr_1.3fr] sm:items-center sm:space-x-10">
         <div className="relative aspect-[4/5] border-[2px] border-black">
           <Image
             src={urlFor(data.image).url()}
