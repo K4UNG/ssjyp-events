@@ -8,8 +8,8 @@ const links = [
     link: "/",
   },
   {
-    name: "Groups",
-    link: "/groups",
+    name: "Artists",
+    link: "/artists",
   },
   {
     name: "Albums",

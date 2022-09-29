@@ -1,5 +1,5 @@
 import React from "react";
-import { Data } from "../../pages/groups";
+import { Data } from "../../pages/artists";
 import Image from "next/image";
 import { urlFor } from "../../sanity";
 import Members from "./Members";

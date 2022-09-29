@@ -25,7 +25,7 @@ interface Props {
   data: Data[];
 }
 
-const GroupsPage: NextPage<Props> = ({ data }) => {
+const ArtistsPage: NextPage<Props> = ({ data }) => {
   return (
     <div className="container mx-auto p-4 min-h-[80vh] md:py-16">
       {data.map((item) => {
@@ -35,7 +35,7 @@ const GroupsPage: NextPage<Props> = ({ data }) => {
   );
 };
 
-export default GroupsPage;
+export default ArtistsPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: Data[] | null =
