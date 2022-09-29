@@ -7,23 +7,6 @@ import Link from "next/link";
 import { Event } from "../../pages";
 import { urlFor } from "../../sanity";
 
-// const data = [
-//   {
-//     name: "ITZY 'TING TING TING'",
-//     overview:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis at leo vitae tincidunt",
-//     slug: "itzy-ting",
-//     image: "/event.webp",
-//   },
-//   {
-//     name: "ITZY not shy",
-//     overview:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis",
-//     slug: "itzy-ting",
-//     image: "/event2.webp",
-//   },
-// ];
-
 function Hero({ data }: { data: Event[] }) {
   const settings = {
     dots: false,
