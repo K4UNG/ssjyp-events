@@ -4,25 +4,27 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
+import { Event } from "../../pages";
+import { urlFor } from "../../sanity";
 
-const data = [
-  {
-    name: "ITZY 'TING TING TING'",
-    overview:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis at leo vitae tincidunt",
-    slug: "itzy-ting",
-    image: "/event.webp",
-  },
-  {
-    name: "ITZY not shy",
-    overview:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis",
-    slug: "itzy-ting",
-    image: "/event2.webp",
-  },
-];
+// const data = [
+//   {
+//     name: "ITZY 'TING TING TING'",
+//     overview:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis at leo vitae tincidunt",
+//     slug: "itzy-ting",
+//     image: "/event.webp",
+//   },
+//   {
+//     name: "ITZY not shy",
+//     overview:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis purus eget diam dictum, in tempus enim imperdiet. Fusce iaculis",
+//     slug: "itzy-ting",
+//     image: "/event2.webp",
+//   },
+// ];
 
-function Hero() {
+function Hero({ data }: { data: Event[] }) {
   const settings = {
     dots: false,
     infinite: false,
@@ -94,9 +96,9 @@ function Hero() {
         >
           {data.map((item) => {
             return (
-              <div className="relative w-full h-full" key={item.slug}>
+              <div className="relative w-full h-full" key={item.slug.current}>
                 <Image
-                  src={item.image}
+                  src={urlFor(item.image).url()}
                   alt={item.name}
                   layout="fill"
                   objectFit="cover"
@@ -165,7 +167,7 @@ function Hero() {
           </div>
           <h2 className="text-2xl font-bold">{current.name}</h2>
           <p className="text-base leading-5 mb-6 mt-2">{current.overview}</p>
-          <Link href={"/events/" + current.slug}>
+          <Link href={"/events/" + current.slug.current}>
             <a className="border-[2px] border-black uppercase font-bold py-1 px-6 transition-colors duration-150 hover:bg-black hover:text-white flex w-fit mx-auto items-center lg:mx-0">
               Learn more
               <svg

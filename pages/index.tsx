@@ -19,18 +19,30 @@ interface Artist {
   birthdate: string;
 }
 
-interface Data {
+export interface Data {
   name: string;
   logo: string;
   albums: Album[];
   artists: Artist[];
 }
 
-export interface DataProps {
-  data: Data[];
+export interface Event {
+  name: string;
+  slug: {
+    current: string;
+  };
+  image: object;
+  overview: string;
+  detail: string;
+  endDate: string;
 }
 
-const Home: NextPage<DataProps> = ({ data }) => {
+interface DataProps {
+  data: Data[];
+  events: Event[];
+}
+
+const Home: NextPage<DataProps> = ({ data, events }) => {
   return (
     <div>
       <Head>
@@ -43,7 +55,7 @@ const Home: NextPage<DataProps> = ({ data }) => {
       </Head>
 
       <div className="container p-4 mx-auto lg:max-w-[960px]">
-        <Hero />
+        <Hero data={events} />
         <Bonus data={data} />
       </div>
     </div>
@@ -77,6 +89,10 @@ export const getStaticProps: GetStaticProps = async () => {
       }
   }`);
 
+  const events: Event[] = await client.fetch(
+    "*[_type=='event']{name, slug, image, overview, detail, endDate}"
+  );
+
   if (!data) {
     return {
       notFound: true,
@@ -86,6 +102,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       data,
+      events,
     },
     revalidate: 1800,
   };

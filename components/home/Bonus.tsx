@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import AlbumItem from "../album/AlbumItem";
 import Image from "next/image";
-import { DataProps } from "../../pages";
+import { Data } from "../../pages";
 import { urlFor } from "../../sanity";
 import { isBirthday, isBonus } from "../../util/util";
 
-function Bonus({ data }: DataProps) {
+function Bonus({ data }: { data: Data[] }) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [group, setGroup] = useState("all");
 
