@@ -7,15 +7,26 @@ import { isBirthday, isBonus } from "../../util/util";
 
 function Bonus({ data }: DataProps) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [group, setGroup] = useState("all");
+
+  const groups = data.map((d) => d.name);
 
   return (
     <div className="mt-8 lg:mt-12 lg:mb-8">
       <h2 className="font-caudex font-bold text-2xl mb-4 lg:text-2.5xl">
         Active Bonus Rewards
       </h2>
-      <select className="border border-black px-2 mb-2 font-dm">
-        <option>All Groups</option>
-        <option>Twice</option>
+      <select
+        value={group}
+        onChange={(e) => setGroup(e.target.value)}
+        className="border border-black px-2 mb-2 font-dm"
+      >
+        <option value="all">All Groups</option>
+        {groups.map((group) => (
+          <option key={group} value={group}>
+            {group}
+          </option>
+        ))}
       </select>
       <br className="md:hidden" />
       <label htmlFor="date" className="font-bold md:ml-4">
@@ -31,6 +42,7 @@ function Bonus({ data }: DataProps) {
       />
 
       {data.map((item) => {
+        if (group !== "all" && group !== item.name) return;
         const birthdays = isBirthday(item.artists, date);
         const bonus = isBonus(item.albums, date);
         let birthdayBonus: string[] = [];
