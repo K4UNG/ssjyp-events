@@ -63,7 +63,7 @@ function getKoreanDate() {
   const curr = new Date().toLocaleString("en-US", {
     timeZone: "Asia/Seoul",
   });
-  //   const curr = new Date("2022/08/23"); // test
+  //   const curr = new Date("2022/09/22"); // test
   const date = new Date(curr);
   return {
     curr: date,
