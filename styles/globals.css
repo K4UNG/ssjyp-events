@@ -14,3 +14,9 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 6px #000000;
+  }
+}
