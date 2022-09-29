@@ -65,8 +65,7 @@ export const getStaticProps: GetStaticProps = async () => {
       title,
       releastDate,
       coverImage,
-      slug,
-      releaseMonth
+      slug
     },
       'artists': *[
         _type=='artist'

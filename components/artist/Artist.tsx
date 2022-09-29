@@ -4,6 +4,7 @@ import Image from "next/image";
 import { urlFor } from "../../sanity";
 import Link from "next/link";
 import BackBtn from "../ui/BackBtn";
+import { getAge } from "../../util/util";
 
 function Artist({ data }: { data: Artist }) {
   return (
@@ -18,15 +19,15 @@ function Artist({ data }: { data: Artist }) {
             alt={data.name}
           />
         </div>
-        <div className="mt-4 mb-8 space-y-2 md:space-y-6">
-          <h1 className="text-3xl md:text-4xl">
+        <div className="mt-4 mb-8">
+          <h1 className="text-3xl md:text-4xl mb-2">
             <span className="font-bold uppercase">{data.name}</span> (
             {data.koreanName})
           </h1>
-          <div className="md:text-lg">
+          <div className="md:text-lg space-y-1 lg:space-y-2">
             <div>
               <span className="font-bold text-lg md:text-xl">Birthdate: </span>
-              {data.birthdate}
+              {data.birthdate} ({getAge(data.birthdate)} years)
             </div>
             <div>
               <span className="font-bold text-lg md:text-xl">

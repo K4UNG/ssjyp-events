@@ -32,6 +32,17 @@ export function isBonus(albums: Album[], time: string) {
   return bonuses;
 }
 
+export function getAge(dateString: string) {
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 function checkRange(
   checkdate: string,
   currYear: number,
