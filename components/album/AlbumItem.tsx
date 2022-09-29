@@ -13,7 +13,7 @@ function AlbumItem({ image, title, percent, slug }: Props) {
   return (
     <Link href={"/albums/" + slug} passHref={true}>
       <a className="border-[2px] border-black relative bg-white">
-        {percent && (
+        {percent !== 0 && (
           <div className="absolute font-bold bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm">
             {percent + " %"}
           </div>

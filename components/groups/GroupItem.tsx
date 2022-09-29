@@ -19,7 +19,7 @@ function GroupItem({ data }: { data: Data }) {
         <div className="col-span-2 md:col-span-1 md:grid md:grid-cols-3 lg:grid-cols-4">
           <div>
             <h2 className="font-bold text-2xl">{data.name}</h2>
-            <div>
+            <div className="md:text-lg">
               <div>
                 <span className="font-bold">Debut date: </span>
                 {data.debut}
@@ -34,7 +34,7 @@ function GroupItem({ data }: { data: Data }) {
               </div>
             </div>
           </div>
-          <p className="hidden md:block md:col-span-2 lg:col-span-3">
+          <p className="hidden md:block md:col-span-2 lg:col-span-3 md:text-lg">
             {data.info}
           </p>
         </div>
