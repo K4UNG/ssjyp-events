@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
       name,
       logo,
       info,
-    'albums': *[_type=='album' && group._ref==^._id]{
+    'albums': *[_type=='album' && group._ref==^._id] | order(releastDate desc) {
         coverImage,
         title,
         slug

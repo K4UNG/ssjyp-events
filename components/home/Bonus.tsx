@@ -64,6 +64,12 @@ function Bonus({ data }: DataProps) {
                 />
               </div>
             </h3>
+            {birthdays.length !== 0 && (
+              <div className="text-xl mb-1">
+                <span className="font-bold">Birthdays: </span>
+                {birthdays.join(", ")}
+              </div>
+            )}
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
               {bonus.length === 0 && birthdayBonus.length === 0 && (
                 <div className="font-bold text-lg col-span-full">

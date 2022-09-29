@@ -62,7 +62,7 @@ function checkRange(
   const start = new Date(year, +month - 1, +day);
   start.setDate(date.getDate() - 3);
   const end = new Date(year, +month - 1, +day);
-  end.setDate(date.getDate() + 3);
+  end.setDate(date.getDate() + 4);
 
   if (curr >= start && curr <= end) {
     return true;
