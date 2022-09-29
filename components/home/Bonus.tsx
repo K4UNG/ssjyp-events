@@ -47,8 +47,10 @@ function Bonus({ data }: DataProps) {
         const bonus = isBonus(item.albums, date);
         let birthdayBonus: string[] = [];
         if (birthdays.length > 0) {
-          item.albums.forEach((album) => {
-            birthdayBonus.push(album.title);
+          birthdays.forEach((_) => {
+            item.albums.forEach((album) => {
+              birthdayBonus.push(album.title);
+            });
           });
         }
         return (
@@ -66,7 +68,7 @@ function Bonus({ data }: DataProps) {
             </h3>
             {birthdays.length !== 0 && (
               <div className="text-xl mb-1">
-                <span className="font-bold">Birthdays: </span>
+                <span className="font-bold">Birthday: </span>
                 {birthdays.join(", ")}
               </div>
             )}
