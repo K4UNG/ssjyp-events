@@ -7,19 +7,23 @@ import client from "../sanity";
 interface Album {
   title: string;
   releastDate: string;
+  releaseMonth: number;
   coverImage: object;
   slug: {
     current: string;
   };
 }
 
+interface Artist {
+  name: string;
+  birthdate: string;
+}
+
 interface Data {
   name: string;
   logo: string;
-  slug: {
-    current: string;
-  };
   albums: Album[];
+  artists: Artist[];
 }
 
 export interface DataProps {
@@ -53,17 +57,25 @@ export const getStaticProps: GetStaticProps = async () => {
     await client.fetch(`*[_type=='group'] | order(debut) {
       name,
       logo,
-      slug,
       'albums': *[
         _type=='album'
         &&
         group._ref==^._id
-                ] {
+                ] | order(releastDate desc) {
       title,
       releastDate,
       coverImage,
-      slug
-    }
+      slug,
+      releaseMonth
+    },
+      'artists': *[
+        _type=='artist'
+        &&
+        group._ref==^._id
+      ] | order(birthdate) {
+        name,
+        birthdate
+      }
   }`);
 
   if (!data) {

@@ -3,8 +3,15 @@ import AlbumItem from "../album/AlbumItem";
 import Image from "next/image";
 import { DataProps } from "../../pages";
 import { urlFor } from "../../sanity";
+import { isBirthday, isBonus } from "../../util/util";
 
 function Bonus({ data }: DataProps) {
+  console.log(
+    isBonus(
+      data[0].albums.map(({ title, releastDate }) => ({ title, releastDate }))
+    )
+  );
+  // console.log(isBirthday(data[0].artists));
   return (
     <div className="mt-8 lg:mt-12 lg:mb-8">
       <h2 className="font-caudex font-bold text-2xl mb-4 lg:text-2.5xl">
