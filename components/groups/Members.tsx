@@ -1,11 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { urlFor } from "../../sanity";
+import Link from "next/link";
 
 interface Props {
   members: {
     name: string;
     avatar: object;
+    slug: { current: string };
   }[];
 }
 
@@ -15,20 +17,24 @@ function Members({ members }: Props) {
       <div className="grid grid-cols-5 gap-2 mt-4 sm:grid-cols-7 md:grid-cols-9 md:col-start-2 lg:grid-cols-10">
         {members.map((member) => {
           return (
-            <div
-              className="relative w-full aspect-square rounded-full overflow-hidden border border-black"
+            <Link
+              href={"/artist/" + member.slug.current}
               key={member.name}
+              passHref={true}
             >
-              <div className="uppercase text-white font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-xs text-shadow">
-                {member.name}
-              </div>
-              <Image
-                src={urlFor(member.avatar).url()}
-                alt={member.name}
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
+              <a className="relative w-full aspect-square rounded-full overflow-hidden border border-black group">
+                <div className="uppercase text-white font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-xs text-shadow">
+                  {member.name}
+                </div>
+                <div className="absolute w-full h-full top-0 left-0 z-10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 duration-150 transition-opacity" />
+                <Image
+                  src={urlFor(member.avatar).url()}
+                  alt={member.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </a>
+            </Link>
           );
         })}
       </div>

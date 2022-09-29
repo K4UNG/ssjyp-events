@@ -6,7 +6,9 @@ import GroupItem from "../../components/groups/GroupItem";
 interface Artist {
   name: string;
   avatar: object;
-  slug: string;
+  slug: {
+    current: string;
+  };
 }
 
 export interface Data {
