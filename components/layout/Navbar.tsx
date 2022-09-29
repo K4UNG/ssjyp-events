@@ -114,6 +114,7 @@ function Navbar() {
                       className={`font-dm uppercase text-3xl ${
                         router.pathname === link.link ? "font-bold" : ""
                       }`}
+                      onClick={() => setMenu(false)}
                     >
                       {link.name}
                     </a>
