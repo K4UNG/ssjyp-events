@@ -7,7 +7,7 @@ function Footer() {
         Designed and developed by{" "}
         <a
           className="underline"
-          href="https://www.facebook.com/kgzin.hein.71/"
+          href="https://kaungzinhein.vercel.app/"
           rel="noreferrer"
           target="_blank"
         >
