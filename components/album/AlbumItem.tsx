@@ -12,7 +12,7 @@ interface Props {
 function AlbumItem({ image, title, percent, slug }: Props) {
   return (
     <Link href={"/album/" + slug} passHref={true}>
-      <a className="border-[2px] border-black relative bg-white">
+      <a className="border-[2px] border-black relative bg-white group">
         {percent !== 0 && (
           <div className="absolute font-bold bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm">
             {percent + " %"}
@@ -24,7 +24,7 @@ function AlbumItem({ image, title, percent, slug }: Props) {
             alt={title}
             layout="fill"
             objectFit="cover"
-            className="hover:scale-105 duration-200 transition-transform"
+            className="hover:scale-105 duration-200 transition-transform group-focus-visible:scale-105"
             priority={true}
           />
         </div>

@@ -36,7 +36,7 @@ function Artist({ data }: { data: Artist }) {
               {data.nationality}
             </div>
             <p>
-              <span className="font-bold text-lg md:text-xl">Fun Fact: </span>
+              <span className="font-bold text-lg md:text-xl">Fun Facts: </span>
               <br />
               {data.funfact}
             </p>

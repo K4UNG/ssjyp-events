@@ -22,11 +22,11 @@ function Members({ members }: Props) {
               key={member.name}
               passHref={true}
             >
-              <a className="relative w-full aspect-square rounded-full overflow-hidden border border-black group">
+              <a className="relative w-full aspect-square rounded-full overflow-hidden outline outline-[1px] outline-black group">
                 <div className="uppercase text-white font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-xs text-shadow">
                   {member.name}
                 </div>
-                <div className="absolute w-full h-full top-0 left-0 z-10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 duration-150 transition-opacity" />
+                <div className="absolute w-full h-full top-0 left-0 z-10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 duration-150 transition-opacity" />
                 <Image
                   src={urlFor(member.avatar).url()}
                   alt={member.name}
