@@ -13,7 +13,7 @@ function AlbumList({ data }: Props) {
     <div>
       <div>
         <div className="flex items-center space-x-1 mb-2">
-          <h2 className="text-lg font-bold">{data.name}</h2>
+          <h2 className="text-2xl font-bold">{data.name}</h2>
           <div className="relative w-10 aspect-video">
             <Image
               src={urlFor(data.logo).url()}

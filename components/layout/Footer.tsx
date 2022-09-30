@@ -5,7 +5,12 @@ function Footer() {
     <footer className="bg-white border-t-[2px] border-black text-center py-6 font-caudex">
       <div>
         Designed and developed by{" "}
-        <a className="underline" href="https://example.com">
+        <a
+          className="underline"
+          href="https://www.facebook.com/kgzin.hein.71/"
+          rel="noreferrer"
+          target="_blank"
+        >
           Kaung Zin Hein
         </a>
       </div>
