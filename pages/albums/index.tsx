@@ -2,6 +2,7 @@ import React from "react";
 import AlbumList from "../../components/album/AlbumList";
 import { GetStaticProps, NextPage } from "next";
 import client from "../../sanity";
+import Head from "next/head";
 
 export interface Data {
   name: string;
@@ -18,6 +19,13 @@ export interface Data {
 const AlbumsPage: NextPage<{ data: Data[] }> = ({ data }) => {
   return (
     <div className="container mx-auto p-4 space-y-8 min-h-[80vh] md:py-16 lg:max-w-[960px]">
+      <Head>
+        <title>Albums | SSJYP</title>
+        <meta
+          name="description"
+          content="Active events and bonus rewards in Superstar JYPNation."
+        />
+      </Head>
       {data.map((item) => (
         <AlbumList key={item.name} data={item} />
       ))}

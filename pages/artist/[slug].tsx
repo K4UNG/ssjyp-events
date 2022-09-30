@@ -2,6 +2,7 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import client from "../../sanity";
 import Artist from "../../components/artist/Artist";
+import Head from "next/head";
 
 export interface Artist {
   name: string;
@@ -27,6 +28,13 @@ export interface Artist {
 const ArtistPage: NextPage<{ data: Artist }> = ({ data }) => {
   return (
     <div className="container grid mx-auto p-4 min-h-[80vh] md:py-12 lg:max-w-[960px]">
+      <Head>
+        <title>{data.name} | SSJYP</title>
+        <meta
+          name="description"
+          content="Active events and bonus rewards in Superstar JYPNation."
+        />
+      </Head>
       <Artist data={data} />
     </div>
   );

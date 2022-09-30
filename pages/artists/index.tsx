@@ -2,6 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import React from "react";
 import client from "../../sanity";
 import GroupItem from "../../components/groups/GroupItem";
+import Head from "next/head";
 
 interface Artist {
   name: string;
@@ -28,6 +29,13 @@ interface Props {
 const ArtistsPage: NextPage<Props> = ({ data }) => {
   return (
     <div className="container mx-auto p-4 min-h-[80vh] md:py-16">
+      <Head>
+        <title>Artists | SSJYP</title>
+        <meta
+          name="description"
+          content="Active events and bonus rewards in Superstar JYPNation."
+        />
+      </Head>
       {data.map((item) => {
         return <GroupItem key={item.name} data={item} />;
       })}

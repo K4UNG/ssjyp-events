@@ -46,12 +46,11 @@ const Home: NextPage<DataProps> = ({ data, events }) => {
   return (
     <div>
       <Head>
-        <title>SSJYP Events</title>
+        <title>Home | SSJYP</title>
         <meta
           name="description"
-          content="Active events and bonuses in Superstart JYPNation game."
+          content="Active events and bonus rewards in Superstar JYPNation."
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="container p-4 mx-auto lg:max-w-[960px]">

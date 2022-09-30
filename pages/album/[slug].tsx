@@ -2,6 +2,7 @@ import React from "react";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import client from "../../sanity";
 import Album from "../../components/album/Album";
+import Head from "next/head";
 
 interface Album {
   title: string;
@@ -17,6 +18,13 @@ interface Props {
 const AlbumPage: NextPage<Props> = ({ data }) => {
   return (
     <div className="container grid mx-auto p-4 min-h-[80vh] md:py-12 lg:max-w-[960px]">
+      <Head>
+        <title>{data.title} | SSJYP</title>
+        <meta
+          name="description"
+          content="Active events and bonus rewards in Superstar JYPNation."
+        />
+      </Head>
       <Album data={data} />
     </div>
   );

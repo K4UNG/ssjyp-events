@@ -10,7 +10,7 @@ interface Props {
 
 function Event({ data }: Props) {
   return (
-    <div className="text-center">
+    <div className="text-center font-caudex">
       <BackBtn />
       <div className="relative aspect-[2/1] md:aspect-[3/1] mb-4 border-[2px] border-black">
         <Image
@@ -21,12 +21,12 @@ function Event({ data }: Props) {
         />
       </div>
       <div className="font-dm text-sm">
-        <span className="font-bold mb-2">Available until: </span>
+        <span className="font-bold mb-4">Available until: </span>
         {data.endDate}
       </div>
-      <h1 className="font-bold text-3xl md:text-4xl">{data.name}</h1>
-      <p className="text-lg my-2">{data.overview}</p>
-      {data.detail && <p className="md:text-lg">{data.detail}</p>}
+      <h1 className="font-bold text-3xl md:text-4xl mt-2 mb-6">{data.name}</h1>
+      <p className="text-lg my-4">{data.overview}</p>
+      {data.detail && <p className="md:text-lg my-4">{data.detail}</p>}
     </div>
   );
 }
