@@ -40,7 +40,7 @@ function Artist({ data }: { data: Artist }) {
               <br />
               {data.funfact}
             </p>
-            <div className="font-bold text-lg md:text-xl">Members:</div>
+            <div className="font-bold text-lg md:text-xl">Other members:</div>
             <div className="flex flex-wrap">
               {data.group.members.map((m) => {
                 if (m.name === data.name || m.group.name !== data.group.name)
