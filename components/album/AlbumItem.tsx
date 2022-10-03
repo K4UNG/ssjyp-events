@@ -14,7 +14,11 @@ function AlbumItem({ image, title, percent, slug }: Props) {
     <Link href={"/album/" + slug} passHref={true}>
       <a className="border-[2px] border-black relative bg-white group">
         {percent !== 0 && (
-          <div className="absolute font-bold bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm">
+          <div
+            className={`absolute font-bold bg-white top-0 left-0 z-10 leading-0 px-2 border-b border-r border-black font-caudex text-sm ${
+              percent >= 5 ? "bg-yellow-400" : ""
+            }`}
+          >
             {percent + " %"}
           </div>
         )}
