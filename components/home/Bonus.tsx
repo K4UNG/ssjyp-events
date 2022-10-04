@@ -3,13 +3,27 @@ import AlbumItem from "../album/AlbumItem";
 import Image from "next/image";
 import { Data } from "../../pages";
 import { urlFor } from "../../sanity";
-import { isBirthday, isBonus } from "../../util/util";
+import { isBirthday, isBonus, getKoreanDate } from "../../util/util";
 
 function Bonus({ data }: { data: Data[] }) {
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(getKoreanDate(new Date().toString()).curr);
   const [group, setGroup] = useState("all");
 
   const groups = data.map((d) => d.name);
+
+  function transformDate(number: string) {
+    if (number.length === 1) {
+      return "0" + number;
+    }
+    return number;
+  }
+
+  const dateString =
+    date.getFullYear() +
+    "-" +
+    transformDate((date.getMonth() + 1).toString()) +
+    "-" +
+    transformDate(date.getDate().toString());
 
   return (
     <div className="mt-8 lg:mt-12 lg:mb-8">
@@ -34,8 +48,10 @@ function Bonus({ data }: { data: Data[] }) {
       </label>
       <br className="md:hidden" />
       <input
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
+        value={dateString}
+        onChange={(e) =>
+          setDate(getKoreanDate(new Date(e.target.value).toString()).curr)
+        }
         type="date"
         id="date"
         className="border border-black px-2 mb-4 font-dm"
@@ -43,8 +59,8 @@ function Bonus({ data }: { data: Data[] }) {
 
       {data.map((item) => {
         if (group !== "all" && group !== item.name) return;
-        const birthdays = isBirthday(item.artists, date);
-        const bonus = isBonus(item.albums, date);
+        const birthdays = isBirthday(item.artists, dateString);
+        const bonus = isBonus(item.albums, dateString);
         let birthdayBonus: string[] = [];
         if (birthdays.length > 0) {
           birthdays.forEach((_) => {

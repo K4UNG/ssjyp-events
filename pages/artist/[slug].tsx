@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!data) {
     return {
       notFound: true,
+      revalidate: 1800,
     };
   }
 
@@ -68,6 +69,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       data: data[0],
     },
-    revalidate: 3600,
+    revalidate: 1800,
   };
 };

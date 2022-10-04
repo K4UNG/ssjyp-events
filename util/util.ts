@@ -70,7 +70,7 @@ function checkRange(
   return false;
 }
 
-function getKoreanDate(time: string) {
+export function getKoreanDate(time: string) {
   const curr = new Date(time).toLocaleString("en-US", {
     timeZone: "Asia/Seoul",
   });
