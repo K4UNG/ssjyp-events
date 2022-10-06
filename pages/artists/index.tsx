@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
   if (!data) {
     return {
       notFound: true,
+      revalidate: 1800,
     };
   }
 
